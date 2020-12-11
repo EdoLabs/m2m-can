@@ -12,7 +12,7 @@ let deviceID = '00C';
 let temp_id = '025';
 
 /* random can device frame id */
-let random_id = '015';
+let random_id = '035';
 
 // create an m2m device/server object that will serve as "can-gateway"
 const device = new m2m.Device(200);
@@ -42,26 +42,10 @@ device.connect(function(err, result){
         temp = frame.data[0] + '.' + frame.data[1];
       }
       if(frame.id === random_id){ // 35, 78, 55
-        //random = frame.data[0] + '.' + frame.data[1];
+	//random = frame.data[0] + '.' + frame.data[1];
 	random = frame.data[0]; 
       }
     });
-	 
-    /*setInterval(function(){
-      can.read('can0', '-e', function(err, frame){
-       if(err) return console.log('read error', err);
-       console.log('read frame', frame);
-	
-        if(frame.id === temp_id){ // 22.23, 25.12, 19.45
-          temp = frame.data[0] + '.' + frame.data[1];
-        }
-        if(frame.id === random_id){ // 35, 78, 55
-          //random = frame.data[0] + '.' + frame.data[1];
-	  random = frame.data[0]; 
-        }
-      });
-    }, 100);*/	    
-	   
   });
   
   // can-temp	   
